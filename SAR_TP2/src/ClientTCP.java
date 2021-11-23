@@ -25,12 +25,21 @@ public class ClientTCP{
 			in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
 			out = new PrintWriter(sc.getOutputStream());
 			
-			String str = "Bonjour!";
-			System.out.println("Client send : " + str);
-			out.println(str);
+			for(int i = 0; i < 10; i++) {
+				String str = "Bonjour numero "+(i+1); 
+				System.out.println("Client - send : "+str);
+				out.println(str);
+
+				String rep = in.readLine();
+				System.out.println("Client - read : "+rep);
+			}
 			
-			String rep = in.readLine();
-			System.out.println("Client read : " + rep);
+//			String str = "Bonjour!";
+//			System.out.println("Client send : " + str);
+//			out.println(str);
+//			
+//			String rep = in.readLine();
+//			System.out.println("Client read : " + rep);
 		}
 		catch(IOException e){
 			System.err.println("Impossible de creer la socket du client : " +e);

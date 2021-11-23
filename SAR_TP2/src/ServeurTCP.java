@@ -15,12 +15,23 @@ public class ServeurTCP{
 			ssv = se.accept();
 			in = new BufferedReader(new InputStreamReader(ssv.getInputStream()));
 			out = new PrintWriter(ssv.getOutputStream());
-			String str = in.readLine();
-			System.out.println("Server read : " + str);
 			
-			String s2 = "Bienvenue!";
-			System.out.println("Server send : " + str);
-			out.println(s2);
+			int i;
+			for(i = 0; i < 10; i++) {
+				String str = in.readLine();
+				System.out.println("Server read : "+str);
+	
+				str = "Bienvenue numero "+(i+1);
+				System.out.println("Server send : "+str);
+				out.println(str); 
+			}
+			
+//			String str = in.readLine();
+//			System.out.println("Server read : " + str);
+//			
+//			String s2 = "Bienvenue!";
+//			System.out.println("Server send : " + str);
+//			out.println(s2);
 		}
 		catch (IOException e){
 			System.err.println("Erreur : " +e);
