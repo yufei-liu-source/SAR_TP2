@@ -22,9 +22,11 @@ public class ClientTCP{
 		}
 		try{
 			sc = new Socket(hote, port);
-			in = new BufferedReader(new InputStreamReader(sc.getInputStream()));
-			out = new PrintWriter(sc.getOutputStream());
-			
+			System.out.println("Client - connexion au serveur");
+			in = new BufferedReader(
+					new InputStreamReader(sc.getInputStream()));
+			out = new PrintWriter(sc.getOutputStream(),true);
+			String req;
 			for(int i = 0; i < 10; i++) {
 				String str = "Bonjour numero "+(i+1); 
 				System.out.println("Client - send : "+str);
@@ -33,8 +35,11 @@ public class ClientTCP{
 				String rep = in.readLine();
 				System.out.println("Client - read : "+rep);
 			}
+			req = "Bye";
+			out.println(req);
 			
-//			String str = "Bonjour!";
+//			String str = "Hello, this is client!";
+//			
 //			System.out.println("Client send : " + str);
 //			out.println(str);
 //			

@@ -13,11 +13,11 @@ public class ServeurTCP{
 		try{
 			se = new ServerSocket(port);
 			ssv = se.accept();
-			in = new BufferedReader(new InputStreamReader(ssv.getInputStream()));
-			out = new PrintWriter(ssv.getOutputStream());
+			in = new BufferedReader(
+					new InputStreamReader(ssv.getInputStream()));
+			out = new PrintWriter(ssv.getOutputStream(),true);
 			
-			int i;
-			for(i = 0; i < 10; i++) {
+			for(int i = 0; i < 10; i++) {
 				String str = in.readLine();
 				System.out.println("Server read : "+str);
 	
@@ -39,6 +39,7 @@ public class ServeurTCP{
 		finally{
 			try{
 				ssv.close();
+				System.out.println("Server - close the socket");
 			}
 			catch (IOException e){}
 		}
