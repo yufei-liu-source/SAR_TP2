@@ -7,7 +7,7 @@ public class ClientIRC extends Thread{
 
 	static int port = 4020;
 	static InetAddress hote= null;
-	Socket sc = null ;
+	Socket sc = null;
 	BufferedReader in; 
 	PrintWriter out;
 	String nom;
@@ -15,13 +15,14 @@ public class ClientIRC extends Thread{
 
 	public ClientIRC(String nom){
 		this.nom = nom;
+		start();
 	}
 
 	public void run(){
 
 		try{
 
-			sc = new Socket();
+			sc = new Socket(hote, port);
 					
 			in = new BufferedReader(
 					new InputStreamReader(sc.getInputStream()));
@@ -75,6 +76,7 @@ public class ClientIRC extends Thread{
 			//envoyer un message « Bye » au serveur
 			req = "Bye";
 			out.println(req);
+			System.out.println("Bye Bye");
 
 		}catch(IOException e){
 			System.err.println("Impossible cree socket du client : " +e);
@@ -90,7 +92,7 @@ public class ClientIRC extends Thread{
 	}
 	
 	public static void main (String[] args){
-		String name;
+		String name = null;
 		try{
 			if (args.length>=2){
 				hote = InetAddress.getByName(args[0]);
@@ -105,7 +107,7 @@ public class ClientIRC extends Thread{
 			System.err.println("Machine inconnue :" +e);
 		}
 		System.out.println("the name insert is : " + name);
-		ClientIRC client1 = new ClientIRC(name);
+		ClientIRC client1 = new ClientIRC("Titi");
 	}
 	
 }

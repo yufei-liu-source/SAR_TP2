@@ -18,7 +18,7 @@ public class ThreadClient extends Thread{
 	
 	public void run() {
 		try {
-			System.out.println("The thread is ready!");
+			System.out.println("The thread of client is ready!");
 			
 			in = new BufferedReader(
 					new InputStreamReader(soc.getInputStream()));
@@ -39,6 +39,7 @@ public class ThreadClient extends Thread{
 				rep = req;
 				out.println(rep);	
 			}
+			System.out.println("Communication finished");
 
 		} catch (IOException e) {
 			// TODO Auto-generated catch block

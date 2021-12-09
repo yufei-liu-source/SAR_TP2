@@ -27,6 +27,7 @@ public class ClientTCP{
 					new InputStreamReader(sc.getInputStream()));
 			out = new PrintWriter(sc.getOutputStream(),true);
 			String req;
+			
 			for(int i = 0; i < 10; i++) {
 				String str = "Bonjour numero "+(i+1); 
 				System.out.println("Client - send : "+str);
@@ -35,6 +36,7 @@ public class ClientTCP{
 				String rep = in.readLine();
 				System.out.println("Client - read : "+rep);
 			}
+			
 			req = "Bye";
 			out.println(req);
 			
