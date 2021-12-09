@@ -16,7 +16,6 @@ public class ServeurMultiThread{
 				//cree un nouveau thread pour le nouveau client
 				ThreadClient tc = new ThreadClient(soc,"toto");
 				//lance l'execution du thread
-				tc.start();
 				System.out.println("One client is connected");
 			}
 		}
